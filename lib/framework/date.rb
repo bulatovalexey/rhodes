@@ -11,10 +11,10 @@ class Date
   alias_method :old_strftime, :strftime
 
   #FIXME as these are defined as Ruby constants, they can not be overwritten
-  MONTHNAMES         = LocalizationSimplified::DateHelper::Monthnames
-  ABBR_MONTHNAMES    = LocalizationSimplified::DateHelper::AbbrMonthnames
-  DAYNAMES          = LocalizationSimplified::DateHelper::Daynames        #not in use by Rails
-  ABBR_DAYNAMES     = LocalizationSimplified::DateHelper::AbbrDaynames    #not in use by Rails
+  MONTHNAMES         = LocalizationSimplified::DateHelper::Monthnames unless const_defined?(:MONTHNAMES)
+  ABBR_MONTHNAMES    = LocalizationSimplified::DateHelper::AbbrMonthnames unless const_defined?(:ABBR_MONTHNAMES)
+  DAYNAMES          = LocalizationSimplified::DateHelper::Daynames unless const_defined?(:DAYNAMES)        #not in use by Rails
+  ABBR_DAYNAMES     = LocalizationSimplified::DateHelper::AbbrDaynames unless const_defined?(:ABBR_DAYNAMES)    #not in use by Rails
   
   DATE_FORMATS	=	{ :short => "%e %b", :long => "%B %e, %Y", :db => "%Y-%m-%d", :number => "%Y%m%d" }
   #, :long_ordinal => lambda { |date| date.strftime("%B #{date.day.ordinalize}, %Y") }, # => "April 25th, 2007" :rfc822 => "%e %b %Y"
